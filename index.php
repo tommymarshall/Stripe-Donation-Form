@@ -92,7 +92,7 @@ if ($_POST) {
 		<div class="wrapper">
 
 			<h1>
-				Stripe Donation Form
+				Stripe Donation Form Awesome
 			</h1>
 
 			<p>
