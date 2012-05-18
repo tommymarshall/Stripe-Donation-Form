@@ -6,19 +6,19 @@ return $config = Array(
 	'test-mode'  => true,
 
 	// Secret Key from Stripe.com Dashboard
-	'secret-key' => 'YOUR-SECRET-KEY',
+	'secret-key' => '0gVicwk4iaWf3KN8YuHafS5YK9KnqsI5',
 
 	// Publishable Key from Stripe.com Dashboard
-	'publishable-key' => 'YOUR-PUBLISHABLE-KEY',
+	'publishable-key' => 'pk_e0VzgynyoZOtGibXFiwBA8rhrNNs0',
 
 	// Where to send upon successful donation (must include http://)
-	'thank-you'  => 'http://domain.com/thankyou.html',
+	'thank-you'  => 'http://stripedonationtest.phpfogapp.com/thankyou.html',
 
 	// Who the email will be from.
 	'email-from' => 'no-reply@domain.com',
 	
 	// Who should be BCC'd on this email. Probably an administrative email.
-	'email-bcc'  => 'you@domain.com',
+	'email-bcc'  => 'tommy.marshall@viget.com',
 	
 	// Subject of email receipt
 	'email-subject' => 'Thank you for your donation!',
