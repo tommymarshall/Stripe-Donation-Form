@@ -214,11 +214,11 @@ if ($_POST) {
 					</div>
 					<div class="form-row form-number">
 						<label>Card Number</label>
-						<input type="text" autocomplete="off" class="card-number text">
+						<input type="text" autocomplete="off" class="card-number text" value="4242424242424242">
 					</div>
 					<div class="form-row form-cvc">
 						<label>CVC</label>
-						<input type="text" autocomplete="off" class="card-cvc text">
+						<input type="text" autocomplete="off" class="card-cvc text" value="123">
 					</div>
 					<div class="form-row form-expiry">
 						<label>Expiration Date</label>
@@ -239,7 +239,7 @@ if ($_POST) {
 						<select class="card-expiry-year text">
 							<option value="2012">2012</option>
 							<option value="2013">2013</option>
-							<option value="2014">2014</option>
+							<option value="2014" selected>2014</option>
 							<option value="2015">2015</option>
 							<option value="2016">2016</option>
 							<option value="2017">2017</option>
