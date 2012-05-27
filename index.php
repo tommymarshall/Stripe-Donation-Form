@@ -96,6 +96,8 @@ if ($_POST) {
 			</h1>
 
 			<p>
+				<strong>This form has been pre-populated with test Credit Card data. No
+				live transactions are taking place.</strong> 
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
