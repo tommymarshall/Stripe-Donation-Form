@@ -28,7 +28,7 @@ if ($_POST) {
 
 	try {
 		if ( ! isset($_POST['stripeToken']) ) {
-			throw new Exception("The Stripe Token was not generated correctly");			
+			throw new Exception("The Stripe Token was not generated correctly");
 		}
 
 		// Charge the card
@@ -41,8 +41,8 @@ if ($_POST) {
 
 		// Build and send the email
 		$headers = "From: " . $config['emaily-from'];
-		$headers .= "\r\nBcc: " . $config['emaily-bcc'] . "\r\n\r\n";	
-		
+		$headers .= "\r\nBcc: " . $config['emaily-bcc'] . "\r\n\r\n";
+
 		// Find and replace values
 		$find = array('%name%', '%amount%');
 		$replace = array($name, '$' . $amount);
@@ -56,9 +56,11 @@ if ($_POST) {
 		$message .= "Transaction ID: " . $donation['id'] . "\n\n\n";
 
 		$subject = $config['email-subject'];
-		
-		// Send it	
-		mail($email,$subject,$message,$headers);
+
+		// Send it
+		if ( !$config['test-mode'] ) {
+			mail($email,$subject,$message,$headers);
+		}
 
 		// Forward to "Thank You" page
 		header('Location: ' . $config['thank-you']);
@@ -97,7 +99,7 @@ if ($_POST) {
 
 			<p>
 				<strong>This form has been pre-populated with test Credit Card data. No
-				live transactions are taking place.</strong> 
+				live transactions are taking place.</strong>
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -236,7 +238,7 @@ if ($_POST) {
 							<option value="09">September</option>
 							<option value="10">October</option>
 							<option value="11">November</option>
-							<option value="12">December</option> 
+							<option value="12">December</option>
 						</select>
 						<select class="card-expiry-year text">
 							<option value="2012">2012</option>
