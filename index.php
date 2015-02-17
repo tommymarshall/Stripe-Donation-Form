@@ -77,7 +77,7 @@ if ($_POST) {
     <meta charset="UTF-8">
     <title>Stripe Donation Form</title>
     <link rel="stylesheet" type="text/css" href="style.css" media="all">
-    <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
         Stripe.setPublishableKey('<?php echo $config['publishable-key'] ?>');
