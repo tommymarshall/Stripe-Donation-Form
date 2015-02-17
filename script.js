@@ -1,20 +1,19 @@
-
-/* =============================================================================
+/*
 	Script for Simple Donation Form
 	Handles validation and form processing
-  ========================================================================== */
+*/
 
 $(function() {
-	var $form = $('.donation-form');
-	var $otheramount = $form.find('.other-amount');
-	var $amount = $form.find('.amount');
+	var $form        = $('.donation-form');
+	var $otherAmount = $form.find('.other-amount');
+	var $amount      = $form.find('.amount');
 	var outputError = function(error) {
-			$('.messages')
-				.html('<p>' + error + '</p>')
-				.addClass('active');
-			$('.submit-button')
-				.removeProp('disabled')
-				.val('Submit Donation');
+		$('.messages')
+			.html('<p>' + error + '</p>')
+			.addClass('active');
+		$('.submit-button')
+			.removeProp('disabled')
+			.val('Submit Donation');
 	};
 	var stripeResponseHandler = function(status, response) {
 		if (response.error) {
@@ -87,11 +86,11 @@ $(function() {
 
 		// Create Stripe token, check if CC information correct
 		Stripe.createToken({
-			name: $('.first-name').val() + ' ' + $('.last-name').val(),
-			number: $('.card-number').val(),
-			cvc: $('.card-cvc').val(),
-			exp_month: $('.card-expiry-month').val(),
-			exp_year: $('.card-expiry-year').val()
+			name      : $('.first-name').val() + ' ' + $('.last-name').val(),
+			number    : $('.card-number').val(),
+			cvc       : $('.card-cvc').val(),
+			exp_month : $('.card-expiry-month').val(),
+			exp_year  : $('.card-expiry-year').val()
 		}, stripeResponseHandler);
 
 		return false;
@@ -100,8 +99,7 @@ $(function() {
 	$('.form-amount label').on('click', function() {
 		var $label = $(this);
 
-		$label.parent().children('label').removeClass('active');
-		$label.addClass('active');
+		$label.addClass('active').parent().children('label').removeClass('active');
 
 		if ( $label.index() === 6 ) {
 			enableinput();
@@ -112,7 +110,7 @@ $(function() {
 	});
 
 	$amount.on('change', function() {
-		$otheramount.val($(this).val());
+		$otherAmount.val($(this).val());
 	});
 
 });

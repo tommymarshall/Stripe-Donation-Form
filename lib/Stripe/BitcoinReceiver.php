@@ -1,12 +1,23 @@
 <?php
 
-class Stripe_Transfer extends Stripe_ApiResource
+class Stripe_BitcoinReceiver extends Stripe_ApiResource
 {
   /**
-   * @param string $id The ID of the transfer to retrieve.
+   * @param string $class Ignored.
+   *
+   * @return string The class URL for this resource. It needs to be special
+   *    cased because it doesn't fit into the standard resource pattern.
+   */
+  public static function classUrl($class)
+  {
+    return "/v1/bitcoin/receivers";
+  }
+
+  /**
+   * @param string $id The ID of the Bitcoin Receiver to retrieve.
    * @param string|null $apiKey
    *
-   * @return Stripe_Transfer
+   * @return Stripe_BitcoinReceiver
    */
   public static function retrieve($id, $apiKey=null)
   {
@@ -18,7 +29,7 @@ class Stripe_Transfer extends Stripe_ApiResource
    * @param array|null $params
    * @param string|null $apiKey
    *
-   * @return array An array of Stripe_Transfers.
+   * @return array An array of Stripe_BitcoinReceivers.
    */
   public static function all($params=null, $apiKey=null)
   {
@@ -30,7 +41,7 @@ class Stripe_Transfer extends Stripe_ApiResource
    * @param array|null $params
    * @param string|null $apiKey
    *
-   * @return Stripe_Transfer The created transfer.
+   * @return Stripe_BitcoinReceiver The created Bitcoin Receiver item.
    */
   public static function create($params=null, $apiKey=null)
   {
@@ -39,24 +50,12 @@ class Stripe_Transfer extends Stripe_ApiResource
   }
 
   /**
-   * @return Stripe_Transfer The canceled transfer.
-   */
-  public function cancel()
-  {
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
-    $url = $this->instanceUrl() . '/cancel';
-    list($response, $apiKey) = $requestor->request('post', $url);
-    $this->refreshFrom($response, $apiKey);
-    return $this;
-  }
-
-  /**
-   * @return Stripe_Transfer The saved transfer.
+   * @return Stripe_BitcoinReceiver The saved Bitcoin Receiver item.
    */
   public function save()
   {
     $class = get_class();
     return self::_scopedSave($class);
   }
-
 }
+

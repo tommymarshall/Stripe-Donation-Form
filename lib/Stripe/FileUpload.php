@@ -1,12 +1,22 @@
 <?php
 
-class Stripe_Coupon extends Stripe_ApiResource
+class Stripe_FileUpload extends Stripe_ApiResource
 {
+  public static function baseUrl()
+  {
+    return Stripe::$apiUploadBase;
+  }
+
+  public static function className($class)
+  {
+    return 'file';
+  }
+
   /**
-   * @param string $id The ID of the coupon to retrieve.
+   * @param string $id The ID of the file upload to retrieve.
    * @param string|null $apiKey
    *
-   * @return Stripe_Coupon
+   * @return Stripe_FileUpload
    */
   public static function retrieve($id, $apiKey=null)
   {
@@ -18,7 +28,7 @@ class Stripe_Coupon extends Stripe_ApiResource
    * @param array|null $params
    * @param string|null $apiKey
    *
-   * @return Stripe_Coupon The created coupon.
+   * @return Stripe_FileUpload The created file upload.
    */
   public static function create($params=null, $apiKey=null)
   {
@@ -28,29 +38,9 @@ class Stripe_Coupon extends Stripe_ApiResource
 
   /**
    * @param array|null $params
-   *
-   * @return Stripe_Coupon The deleted coupon.
-   */
-  public function delete($params=null)
-  {
-    $class = get_class();
-    return self::_scopedDelete($class, $params);
-  }
-
-  /**
-   * @return Stripe_Coupon The saved coupon.
-   */
-  public function save()
-  {
-    $class = get_class();
-    return self::_scopedSave($class);
-  }
-
-  /**
-   * @param array|null $params
    * @param string|null $apiKey
    *
-   * @return array An array of Stripe_Coupons.
+   * @return array An array of Stripe_FileUploads
    */
   public static function all($params=null, $apiKey=null)
   {

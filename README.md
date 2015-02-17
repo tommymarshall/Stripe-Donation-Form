@@ -2,11 +2,11 @@
 
 ### Description
 
-This is a simple example showing how to accept donations directly from your website using [Stripe](http://stripe.com). Note: This is meant to help you get started, not to be the final product. You should add server-side validation.
+This is a simple example showing how to accept donations directly from your website using [Stripe](http://stripe.com). Note: This is meant to help you get started, not to be the final product. You should add server-side validation. **Idealy, you would be using [Composer](https://getcomposer.org/) to import the most recent version of Stripe's PHP SDK, but for simplicity, the library is included.**
 
-[View Demo](https://stripedonationtest.phpfogapp.com/)  |  [Download Script](https://github.com/tommymarshall/Stripe-Donation-Form/zipball/master)
+[View Demo](https://stripedonationtest.phpfogapp.com/) | [Download Script](https://github.com/tommymarshall/Stripe-Donation-Form/zipball/master)
 
-### Feature Overview
+### Features
 
 - Process donation using Stripe Payments
 - Validate user input
@@ -16,7 +16,7 @@ This is a simple example showing how to accept donations directly from your webs
 ### Requirements
 
 - [SSL Certificate](http://webdesign.about.com/od/ecommerce/a/aa070407.htm) installed on server (Not required for testing purposes)
-- PHP 4.3+
+- PHP 5.2+
 
 ### Installation
 
