@@ -151,6 +151,12 @@ body {
 	width: 90px;
 }
 
+.donation-form .form-currency,
+.donation-form .form-amount {
+	display: inline-block;
+	width: 153px;
+}
+
 .donation-form .form-cvc,
 .donation-form .form-expiry {
 	display: inline-block;
