@@ -21,7 +21,7 @@ if ($_POST) {
     $first_name = $_POST['first-name'];
     $last_name  = $_POST['last-name'];
     $name       = $first_name . ' ' . $last_name;
-    $address    = $_POST['address'] . "\n" . $_POST['city'] . ', ' . $_POST['state'] . ' ' . $_POST['zip'];
+    $address    = $_POST['address'] . "\n" . $_POST['city'] . ', ' . $_POST['state'] . ' ' . $_POST['zip']. ' ' .$_POST['country'];
     $email      = $_POST['email'];
     $phone      = $_POST['phone'];
     $amount     = (float) $_POST['amount'];
@@ -36,7 +36,7 @@ if ($_POST) {
             'card'        => $token,
             'description' => 'Donation by ' . $name . ' (' . $email . ')',
             'amount'      => $amount * 100,
-            'currency'    => 'usd'
+            'currency'    => $_POST['currency']
         ));
 
         // Build and send the email
@@ -135,63 +135,15 @@ if ($_POST) {
                 </div>
                 <div class="form-row form-state">
                     <label>State</label>
-                    <select name="state" class="state text">
-                        <option value="AL">AL</option>
-                        <option value="AK">AK</option>
-                        <option value="AZ">AZ</option>
-                        <option value="AR">AR</option>
-                        <option value="CA">CA</option>
-                        <option value="CO">CO</option>
-                        <option value="CT">CT</option>
-                        <option value="DE">DE</option>
-                        <option value="DC">DC</option>
-                        <option value="FL">FL</option>
-                        <option value="GA">GA</option>
-                        <option value="HI">HI</option>
-                        <option value="ID">ID</option>
-                        <option value="IL">IL</option>
-                        <option value="IN">IN</option>
-                        <option value="IA">IA</option>
-                        <option value="KS">KS</option>
-                        <option value="KY">KY</option>
-                        <option value="LA">LA</option>
-                        <option value="ME">ME</option>
-                        <option value="MD">MD</option>
-                        <option value="MA">MA</option>
-                        <option value="MI">MI</option>
-                        <option value="MN">MN</option>
-                        <option value="MS">MS</option>
-                        <option value="MO">MO</option>
-                        <option value="MT">MT</option>
-                        <option value="NE">NE</option>
-                        <option value="NV">NV</option>
-                        <option value="NH">NH</option>
-                        <option value="NJ">NJ</option>
-                        <option value="NM">NM</option>
-                        <option value="NY">NY</option>
-                        <option value="NC">NC</option>
-                        <option value="ND">ND</option>
-                        <option value="OH">OH</option>
-                        <option value="OK">OK</option>
-                        <option value="OR">OR</option>
-                        <option value="PA">PA</option>
-                        <option value="RI">RI</option>
-                        <option value="SC">SC</option>
-                        <option value="SD">SD</option>
-                        <option value="TN">TN</option>
-                        <option value="TX">TX</option>
-                        <option value="UT">UT</option>
-                        <option value="VT">VT</option>
-                        <option value="VA">VA</option>
-                        <option value="WA">WA</option>
-                        <option value="WV">WV</option>
-                        <option value="WI">WI</option>
-                        <option value="WY">WY</option>
-                    </select>
+                    <input type=”text” name=“state" class="state text">
                 </div>
                 <div class="form-row form-zip">
                     <label>Zip</label>
                     <input type="text" name="zip" class="zip text">
+                </div>
+                <div class="form-row form-country">
+                    <label>Country</label>
+                    <input type="text" name"country" class="country text">
                 </div>
             </fieldset>
 
@@ -199,14 +151,19 @@ if ($_POST) {
                 <legend>
                     Your Generous Donation
                 </legend>
+                <div class="form-row form-currency">
+                    <label>Currency and Amount</label>
+                    <select name="currency" class="state text">
+                        <option value="USD">US Dollars</option>
+                        <option value="GBP">Great British Pounds</option>
+                        <option value="CAD">Canadian Dollars</option>
+                        <option value="EUR">Euros</option>
+                        <option value="INR">Indian Rupee</option>
+                        <option value="RUB">Russian Ruble</option>
+                    </select>
+                </div>
                 <div class="form-row form-amount">
-                    <label><input type="radio" name="amount" class="set-amount" value="25"> $25</label>
-                    <label><input type="radio" name="amount" class="set-amount" value="500"> $500</label>
-                    <label><input type="radio" name="amount" class="set-amount" value="2500"> $2,500</label>
-                    <label><input type="radio" name="amount" class="set-amount" value="100"> $100</label>
-                    <label><input type="radio" name="amount" class="set-amount" value="1000"> $1,000</label>
-                    <label><input type="radio" name="amount" class="set-amount" value="5000"> $5,000</label>
-                    <label><input type="radio" name="amount" class="other-amount" value="0"> Other:</label> <input type="text" class="amount text" disabled>
+                    <input type="text" name="amount" class="amount text">
                 </div>
                 <div class="form-row form-number">
                     <label>Card Number</label>
@@ -219,26 +176,29 @@ if ($_POST) {
                 <div class="form-row form-expiry">
                     <label>Expiration Date</label>
                     <select class="card-expiry-month text">
-                        <option value="01" selected>January</option>
-                        <option value="02">February</option>
-                        <option value="03">March</option>
-                        <option value="04">April</option>
-                        <option value="05">May</option>
-                        <option value="06">June</option>
-                        <option value="07">July</option>
-                        <option value="08">August</option>
-                        <option value="09">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
+                        <option value="01" selected>Jan (01)</option>
+                        <option value="02">Feb (02)</option>
+                        <option value="03">Mar (03)</option>
+                        <option value="04">Apr (04)</option>
+                        <option value="05">May (05)</option>
+                        <option value="06">June (06)</option>
+                        <option value="07">July (07)</option>
+                        <option value="08">Aug (08)</option>
+                        <option value="09">Sep (09)</option>
+                        <option value="10">Oct (10)</option>
+                        <option value="11">Nov (11)</option>
+                        <option value="12">Dec (12)</option>
                     </select>
                     <select class="card-expiry-year text">
-                        <option value="2015" selected>2015</option>
+                        <option value="2015">2015</option>
                         <option value="2016">2016</option>
                         <option value="2017">2017</option>
                         <option value="2018">2018</option>
                         <option value="2019">2019</option>
                         <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
                     </select>
                 </div>
                 <div class="form-row form-submit">
